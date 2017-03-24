@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     git \
     g++ \
+    imagemagick \
     libatlas-dev \
     libatlas-base-dev \
     libboost-all-dev \
