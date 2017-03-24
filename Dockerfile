@@ -1,4 +1,4 @@
-FROM buildpack-deps:jessie
+FROM buildpack-deps:xenial
 MAINTAINER Michael Opitz <michael.opitz@icg.tugraz.at>
 
 ENV DEBIAN_FRONTEND noninteractive
