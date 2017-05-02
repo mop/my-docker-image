@@ -34,3 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN useradd --create-home --shell /bin/bash vagrant
 RUN echo vagrant:vagrant | chpasswd
 RUN echo root:vagrant | chpasswd
+RUN echo "vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/01_vagrant && chmod 0400 /etc/sudoers.d/01_vagrant
+RUN mkdir /var/run/sshd
+CMD ["/usr/sbin/sshd", "-D", "-e"]
+EXPOSE 22
