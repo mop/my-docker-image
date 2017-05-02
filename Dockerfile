@@ -36,5 +36,10 @@ RUN echo vagrant:vagrant | chpasswd
 RUN echo root:vagrant | chpasswd
 RUN echo "vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/01_vagrant && chmod 0400 /etc/sudoers.d/01_vagrant
 RUN mkdir /var/run/sshd
+ADD https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub \
+    /home/vagrant/.ssh/authorized_keys
+RUN chown -R vagrant:vagrant /home/vagrant/.ssh
+RUN chmod 0600 /home/vagrant/.ssh/authorized_keys
+RUN chmod 0700 /home/vagrant/.ssh
 CMD ["/usr/sbin/sshd", "-D", "-e"]
 EXPOSE 22
